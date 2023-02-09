@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Addition Game</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <style>
+    #start-timer-button {
+      display: none;
+    }
+  </style>
+  <body>
+    <button id="start-timer-button" type="submit">Start Timer</button>
+    <h1 id="header">Addition Game</h1>
+    <div id="timer"></div>
+    <div id="question">
+      <p id="num1"></p>
+      <p>+</p>
+      <p id="num2"></p>
+    </div>
+    <div id="options">
+      <button id="option1"></button>
+      <button id="option2"></button>
+    </div>
+    <p id="result"></p>
+    <script src="script.js"></script>
+  </body>
+
+  <link rel="stylesheet" href="script.js" />
+  <script>
+    const startButton = document.querySelector("#start-timer-button");
+    const timerDisplay = document.querySelector("#timer");
+    let timer;
+
+    function startTimer() {
+      let seconds = 0;
+      timer = setInterval(function () {
+        seconds++;
+        timerDisplay.innerHTML = seconds + " seconds";
+      }, 1000);
+    }
+
+    const queryParams = new URLSearchParams(window.location.search);
+    if (
+      queryParams.has("startTimer") &&
+      queryParams.get("startTimer") === "true"
+    ) {
+      startTimer();
+    }
+  </script>
+</html>
